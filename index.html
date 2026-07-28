@@ -204,6 +204,17 @@
     opacity: 0.85;
     border-radius: 2px;
   }
+  /* Hero 标题轮播:引导行固定,第二行轮换。
+     grid 叠放让容器高度恒等于最高一条(移动端折两行也不抖动) */
+  .hero-lead { display: block; }
+  .hero-rotate { display: grid; }
+  .hero-rotate-item {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+    will-change: opacity;
+  }
+  .hero-rotate-item.is-on { opacity: 1; }
   /* ==========================================
      Buttons - editorial / B2B feel
      ========================================== */
@@ -1115,6 +1126,44 @@
   }
   </style>
 <script src="lead-capture.js" defer></script>
+<!-- /* MALL · geo */ Organization JSON-LD · 品牌实体结构化数据 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "北京花花食界食品科技有限公司",
+  "alternateName": "Foodvio",
+  "url": "https://foodvio.com.cn",
+  "logo": "TODO_官网logo绝对URL待补充",
+  "description": "北京花花食界食品科技有限公司成立于 2021 年 8 月，总部位于北京，是国内领先的专业西餐食品供应链品牌与西式餐饮一体化解决方案服务商。公司以“还原世界味道，享受美食乐趣”及“三好一高”（食材好、口味好、服务好、还原度高）为产品理念，为餐饮企业、大型 KA 客户及家庭消费者提供标准化西餐产品方案与一站式定制服务。",
+  "foundingDate": "2021-08",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "CN",
+    "addressRegion": "北京市",
+    "addressLocality": "朝阳区",
+    "streetAddress": "酒仙桥零秒空间419房间"
+  },
+  "email": "huahuakefu1@foodvio.com.cn",
+  "telephone": "400-6879-568",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "telephone": "400-6879-568",
+      "email": "huahuakefu1@foodvio.com.cn",
+      "areaServed": "CN",
+      "availableLanguage": ["zh-CN", "en"]
+    }
+  ],
+  "sameAs": [
+    "TODO_公众号URL",
+    "TODO_抖音URL",
+    "TODO_视频号URL",
+    "TODO_头条号URL"
+  ]
+}
+</script>
 </head>
 <body class="grain">
 <!-- ═══════════════════════════════════════════
@@ -1162,7 +1211,7 @@
         <a href="products-sauces-v62.html" class="mega-link more-link" style="margin-top:8px;font-style:italic;color:var(--terra);" data-foodvio-cta="general_contact"><span data-zh>查看全部酱料</span><span data-en>See all sauces</span> →</a>
       </div>
       <div class="col-span-2">
-        <a href="products-staples-v62.html" class="mega-col-title" style="display:block;color:var(--forest);text-decoration:none;font-weight:700;" data-foodvio-cta="general_contact">🍕 <span data-zh>西式主食</span><span data-en>Staples</span></a>
+        <a href="products-staples-v62.html" class="mega-col-title" style="display:block;color:var(--forest);text-decoration:none;font-weight:700;" data-foodvio-cta="general_contact">🍕 <span data-zh>西餐主食</span><span data-en>Staples</span></a>
         <a href="products-staples-v62.html#sku-black-truffle-pizza" class="mega-link" data-foodvio-cta="general_contact">🍕 <span data-zh>黑松露披萨</span><span data-en>Black Truffle Pizza</span></a>
         <a href="products-staples-v62.html#sku-classic-bolognese" class="mega-link" data-foodvio-cta="general_contact">🍝 <span data-zh>古法肉酱意面</span><span data-en>Classic Bolognese Pasta</span></a>
         <a href="products-staples-v62.html#sku-japanese-squid-rice" class="mega-link" data-foodvio-cta="general_contact">🍱 <span data-zh>日式鱿鱼炒饭</span><span data-en>Japanese Squid Fried Rice</span></a>
@@ -1198,24 +1247,22 @@
   <div class="mega-menu" id="mega-solutions">
     <div class="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
       <div class="col-span-4">
-        <div class="mega-col-title"><span data-zh>按业态(中文 18 场景)</span><span data-en>By Scenario (CN 18)</span></div>
-        <a href="solutions-light-kitchen-v62.html" class="mega-link">🔵 轻后厨(6)</a>
-        <a href="for-global-v62.html" class="mega-link">🟢 全球连锁(4)</a>
-        <a href="for-industrial-v62.html" class="mega-link">🟡 机构团餐(3)</a>
-        <a href="for-retail-v62.html" class="mega-link">🟠 新零售(3)</a>
+        <div class="mega-col-title"><span data-zh>四大行业方案</span><span data-en>Four Industry Solutions</span></div><!-- MALL · geo -->
+        <a href="solutions-light-kitchen-v62.html" class="mega-link">🔵 <span data-zh>中小企业</span><span data-en>SMEs</span></a>
+        <a href="for-industrial-v62.html" class="mega-link">🟡 <span data-zh>国央企</span><span data-en>SOEs &amp; Institutions</span></a>
+        <a href="for-foodservice-v62.html" class="mega-link">🍽️ <span data-zh>连锁餐饮</span><span data-en>Chain Foodservice</span></a>
+        <a href="for-retail-v62.html" class="mega-link">🟠 <span data-zh>新零售</span><span data-en>New Retail</span></a>
       </div>
       <div class="col-span-4">
-        <div class="mega-col-title">Featured Cases</div>
-        <a href="solutions-coffee-shops-v62.html" class="mega-link"><span data-zh>华东咖啡连锁 · 24 店</span><span data-en>East China Coffee · 24 stores</span></a>
-        <a href="solutions-index-v62.html" class="mega-link"><span data-zh>高校食堂季度更新</span><span data-en>University quarterly menu</span></a>
-        <a href="for-global-v62.html" class="mega-link"><span data-zh>SEA 餐饮集团 · 200+ 店</span><span data-en>SEA chain · 200+ stores</span></a>
+        <div class="mega-col-title"><span data-zh>场景速达</span><span data-en>By Scenario</span></div>
+        <a href="solutions-coffee-shops-v62.html" class="mega-link">☕ <span data-zh>咖啡厅 / 酒咖</span><span data-en>Coffee &amp; bistro</span></a>
+        <a href="solutions-light-kitchen-v62.html" class="mega-link">🍳 <span data-zh>轻后厨场景</span><span data-en>Light kitchen</span></a>
+        <a href="solutions-index-v62.html" class="mega-link"><span data-zh>方案总览 →</span><span data-en>All solutions →</span></a>
       </div>
       <div class="col-span-4">
-        <div class="mega-col-title">Global Channels</div>
-        <a href="for-foodservice-v62.html" class="mega-link">🍽️ Foodservice</a>
-        <a href="for-industrial-v62.html" class="mega-link">🏢 Industrial</a>
-        <a href="for-retail-v62.html" class="mega-link">🛒 Retail</a>
-        <a href="for-online-sales-v62.html" class="mega-link">💻 Online Sales</a>
+        <div class="mega-col-title"><span data-zh>全球业务</span><span data-en>Global</span></div>
+        <a href="for-global-v62.html" class="mega-link">🌏 <span data-zh>全球连锁 · 出口</span><span data-en>Global chains &amp; export</span></a>
+        <a href="capabilities-certifications-v62.html" class="mega-link">🏅 <span data-zh>出口认证与合规</span><span data-en>Export certifications</span></a>
       </div>
     </div>
   </div>
@@ -1250,9 +1297,10 @@
     <div class="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8">
       <div class="col-span-4">
         <div class="mega-col-title">Manufacturing</div>
-        <a href="capabilities-ganzhou-factory-v62.html" class="mega-link">🏭 <span data-zh>江西赣州(6.66 万㎡)</span><span data-en>Jiangxi Ganzhou · 66,600㎡</span></a>
+        <a href="capabilities-ganzhou-factory-v62.html" class="mega-link">🏭 <span data-zh>江西赣州(6.6 万㎡)</span><span data-en>Jiangxi Ganzhou · 66,000㎡</span></a>
         <a href="capabilities-zhangjiakou-factory-v62.html" class="mega-link">🥖 <span data-zh>河北张家口(1.6 万㎡)</span><span data-en>Hebei Zhangjiakou · 16,000㎡</span></a>
-        <a href="capabilities-huairou-factory-v62.html" class="mega-link">🏢 <span data-zh>北京怀柔(总部研发)</span><span data-en>Beijing Huairou · HQ + R&D</span></a>
+        <a href="capabilities-index-v62.html" class="mega-link">🥫 <span data-zh>河北邢台(西式酱料 8,000 ㎡)</span><span data-en>Hebei Xingtai · Sauces · 8,000㎡</span></a><!-- MALL · geo -->
+        <a href="capabilities-huairou-factory-v62.html" class="mega-link">🏢 <span data-zh>北京研发中心(总部研发)</span><span data-en>Beijing R&D Center · HQ + R&D</span></a>
       </div>
       <div class="col-span-4">
         <div class="mega-col-title">Expertise</div>
@@ -1264,7 +1312,7 @@
         <div class="mega-col-title">Certifications</div>
         <a href="capabilities-certifications-v62.html" class="mega-link">HACCP · ISO 22000 · BSCI</a>
         <a href="capabilities-certifications-v62.html" class="mega-link">US FDA Registered</a>
-        <a href="capabilities-certifications-v62.html" class="mega-link">8 SC Production Categories</a>
+        <a href="capabilities-certifications-v62.html" class="mega-link">SC Licensed · 4 Production Bases</a>
         <a href="capabilities-certifications-v62.html" class="mega-link mt-3 text-xs opacity-70"><span data-zh>预约工厂参观 →</span><span data-en>Book a factory visit →</span></a>
       </div>
     </div>
@@ -1308,8 +1356,12 @@
       <!-- 1. Brand mark (small) -->
       <!-- 2. Main Slogan (Chinese, dominant) -->
       <h1 class="hero-title-zh reveal delay-1" style="font-size: clamp(40px, 7vw, 96px);" data-zh>
-        源自中国的<br>
-        <span class="hl-pro">专业西餐</span>食品品牌
+        <span class="hero-lead">花花食界</span>
+        <span class="hero-rotate" id="heroRotate">
+          <span class="hero-rotate-item is-on">中国<span class="hl-pro">西餐供应链</span>专家</span>
+          <span class="hero-rotate-item">中国<span class="hl-pro">专业西餐</span>食品品牌</span>
+          <span class="hero-rotate-item">中国<span class="hl-pro">新西式</span>餐饮服务商</span>
+        </span>
       </h1>
       <h1 class="hero-title-en reveal delay-1" style="font-size: clamp(40px, 7vw, 96px);" data-en>
         Western Cuisine.<br>
@@ -1425,15 +1477,15 @@
       </div>
     
       <a href="products-sauces-v62.html" class="ps-more-mobile" data-foodvio-cta="general_contact">
-        <span data-zh>查看全部 18 款酱料</span><span data-en>See all 18 sauces</span> →
+        <span data-zh>查看全部 15 款酱料</span><span data-en>See all 15 sauces</span> →
       </a>
     </div>
-    <!-- Cat 02 · 西式主食 -->
+    <!-- Cat 02 · 西餐主食 -->
     <div class="ps-cat-row reveal delay-1">
       <div class="ps-cat-head">
         <div class="ps-cat-title">
           <span class="icon">🍕</span>
-          <h3><span data-zh>西式主食</span><span data-en>Western Staples</span></h3>
+          <h3><span data-zh>西餐主食</span><span data-en>Western Staples</span></h3>
           <span class="en">Staples</span>
         </div>
         <a href="products-staples-v62.html" class="ps-more" data-foodvio-cta="general_contact">
@@ -1672,64 +1724,82 @@
     </div>
     <!-- 4 role cards -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-      <!-- Card 1: Foodservice -->
-      <a href="for-foodservice-v62.html" class="role-card reveal delay-1">
+      <!-- MALL · geo · Card 1: SMEs -->
+      <a href="solutions-light-kitchen-v62.html" class="role-card reveal delay-1">
         <span class="num">01</span>
-        <span class="icon">🍽️</span>
-        <h3 class="font-serif-sc font-bold text-2xl text-forest mb-2"><span data-zh>餐饮运营商</span><span data-en>Foodservice</span></h3>
-        <div class="font-display italic text-sm text-terra mb-4">Foodservice</div>
+        <span class="icon">🍳</span>
+        <h3 class="font-serif-sc font-bold text-2xl text-forest mb-2"><span data-zh>中小企业</span><span data-en>SMEs</span></h3>
+        <div class="font-display italic text-sm text-terra mb-4">Light Kitchen</div>
         <p class="text-sm text-forest/70 leading-relaxed mb-3">
-          <span data-zh>咖啡馆 · 西式简餐 · 连锁 · 酒店 · 酒吧</span>
-          <span data-en>Cafés · Bistros · Chains · Hotels · Bars</span>
+          <span data-zh>咖啡厅 / 酒咖 · 乐园 · 文旅空间 · 西式简餐厅</span>
+          <span data-en>Cafés · Parks · Cultural venues · Bistros</span>
         </p>
         <p class="text-sm text-forest/85 italic">
-          <span data-zh>"我要 10 分钟出餐的高端方案"</span>
-          <span data-en>"10-minute prep, premium menu."</span>
+          <span data-zh>"后厨小 · 人员少 · 出餐快 · 菜单丰富"</span>
+          <span data-en>"Small kitchen, lean team, fast serve."</span>
         </p>
         <span class="arrow-end">
-          <span data-zh>进入餐饮方案</span><span data-en>Enter</span>
+          <span data-zh>进入中小企业方案</span><span data-en>Enter</span>
           <span>→</span>
         </span>
       </a>
-      <!-- Card 2: Industrial -->
+      <!-- MALL · geo · Card 2: SOEs -->
       <a href="for-industrial-v62.html" class="role-card reveal delay-2">
         <span class="num">02</span>
         <span class="icon">🏢</span>
-        <h3 class="font-serif-sc font-bold text-2xl text-forest mb-2"><span data-zh>团餐与机构</span><span data-en>Industrial</span></h3>
-        <div class="font-display italic text-sm text-terra mb-4">Industrial</div>
+        <h3 class="font-serif-sc font-bold text-2xl text-forest mb-2"><span data-zh>国央企</span><span data-en>SOEs &amp; Institutions</span></h3>
+        <div class="font-display italic text-sm text-terra mb-4">Institutions</div>
         <p class="text-sm text-forest/70 leading-relaxed mb-3">
-          <span data-zh>国企 · 高校 · 产业园 · 公共餐饮</span>
-          <span data-en>Corporate · University · Business Park</span>
+          <span data-zh>国央企食堂 · 高校 · 航空配餐 · 团餐渠道</span>
+          <span data-en>SOE canteens · Universities · Airline catering</span>
         </p>
         <p class="text-sm text-forest/85 italic">
-          <span data-zh>"大批量 · 稳定 · 营养标签合规"</span>
-          <span data-en>"Bulk, stable, nutrition-compliant."</span>
+          <span data-zh>"稳定供应 · 食品安全 · 批量交付"</span>
+          <span data-en>"Stable supply, food safety, bulk delivery."</span>
         </p>
         <span class="arrow-end">
-          <span data-zh>进入团餐方案</span><span data-en>Enter</span>
+          <span data-zh>进入国央企方案</span><span data-en>Enter</span>
           <span>→</span>
         </span>
       </a>
-      <!-- Card 3: Retail -->
-      <a href="for-retail-v62.html" class="role-card reveal delay-3">
+      <!-- MALL · geo · Card 3: Chain Foodservice -->
+      <a href="for-foodservice-v62.html" class="role-card reveal delay-3">
         <span class="num">03</span>
+        <span class="icon">🍽️</span>
+        <h3 class="font-serif-sc font-bold text-2xl text-forest mb-2"><span data-zh>连锁餐饮</span><span data-en>Chain Foodservice</span></h3>
+        <div class="font-display italic text-sm text-terra mb-4">Foodservice</div>
+        <p class="text-sm text-forest/70 leading-relaxed mb-3">
+          <span data-zh>咖啡西餐 · 主题餐厅 · 多门店连锁 · 商场餐饮</span>
+          <span data-en>Café-bistros · Theme dining · Multi-store chains</span>
+        </p>
+        <p class="text-sm text-forest/85 italic">
+          <span data-zh>"口味统一 · 门店复制 · 持续上新"</span>
+          <span data-en>"Consistent taste, replicable stores, fresh menus."</span>
+        </p>
+        <span class="arrow-end">
+          <span data-zh>进入连锁餐饮方案</span><span data-en>Enter</span>
+          <span>→</span>
+        </span>
+      </a>
+      <!-- MALL · geo · Card 4: New Retail -->
+      <a href="for-retail-v62.html" class="role-card reveal delay-4">
+        <span class="num">04</span>
         <span class="icon">🛒</span>
-        <h3 class="font-serif-sc font-bold text-2xl text-forest mb-2"><span data-zh>零售品牌方</span><span data-en>Retail</span></h3>
+        <h3 class="font-serif-sc font-bold text-2xl text-forest mb-2"><span data-zh>新零售</span><span data-en>New Retail</span></h3>
         <div class="font-display italic text-sm text-terra mb-4">Retail</div>
         <p class="text-sm text-forest/70 leading-relaxed mb-3">
-          <span data-zh>超市连锁 · 便利店 · OEM 自有品牌</span>
-          <span data-en>Supermarket · CVS · Private Label OEM</span>
+          <span data-zh>精品超市 · 会员店 · 硬折扣 · 社区零售 · 线上平台</span>
+          <span data-en>Premium markets · Hard discount · Online platforms</span>
         </p>
         <p class="text-sm text-forest/85 italic">
-          <span data-zh>"OEM 代工 + 包装定制"</span>
-          <span data-en>"OEM + custom packaging."</span>
+          <span data-zh>"包装化 · 渠道适配 · 家庭消费"</span>
+          <span data-en>"Retail-ready packs for family tables."</span>
         </p>
         <span class="arrow-end">
-          <span data-zh>进入零售方案</span><span data-en>Enter</span>
+          <span data-zh>进入新零售方案</span><span data-en>Enter</span>
           <span>→</span>
         </span>
       </a>
-      <!-- Card 4 跨境电商 已删除(W16 改动 1b) -->
       <!-- Card 5: Global -->
       <a href="for-global-v62.html" class="role-card reveal delay-5" onclick="forceEnglishAndGo(event, 'for-global-v62.html')">
         <span class="num">05</span>
@@ -1819,6 +1889,39 @@
   </div>
 </section>
 <!-- ═══════════════════════════════════════════
+     SCREEN 3.5 · 公司简介(GEO 文字区块)/* MALL · geo */
+     数据来源:data/company-info.md(版本A概述 + 第五节核心数据)
+     ═══════════════════════════════════════════ -->
+<section id="company-intro" class="bg-paper py-12 md:py-16">
+  <div class="max-w-[1100px] mx-auto px-6 md:px-12">
+    <div class="grid md:grid-cols-12 gap-10 items-start reveal">
+      <div class="md:col-span-4">
+        <div class="section-no mb-6">02.5 / About Foodvio</div>
+        <h2 class="font-serif-sc font-bold text-forest text-3xl md:text-4xl leading-tight">
+          <span data-zh>公司简介</span>
+          <span data-en>About Foodvio</span>
+        </h2>
+      </div>
+      <div class="md:col-span-8 font-serif-sc text-forest/85 leading-relaxed text-base md:text-lg">
+        <p class="mb-6">
+          <span data-zh>北京花花食界食品科技有限公司成立于 2021 年 8 月,总部位于北京,是国内领先的专业西餐食品供应链品牌与西式餐饮一体化解决方案服务商。公司以"还原世界味道,享受美食乐趣"及"三好一高"(食材好、口味好、服务好、还原度高)为产品理念,为餐饮企业、大型 KA 客户及家庭消费者提供标准化西餐产品方案与一站式定制服务。</span>
+          <span data-en>Beijing Foodvio Food Technology Co., Ltd. was founded in August 2021 and is headquartered in Beijing — a leading professional Western cuisine supply-chain brand and integrated Western foodservice solutions provider in China. Guided by "restoring world flavors, sharing the joy of good food" and our "Three Goods, One High" philosophy (great ingredients, great taste, great service, high authenticity), we deliver standardized Western cuisine programs and one-stop custom services for foodservice operators, major KA clients and families.</span>
+        </p>
+        <ul class="space-y-3 text-sm md:text-base text-forest/80 mb-6" style="list-style: none; padding: 0;">
+          <li>· <span data-zh>成立于 2021 年 8 月,总部北京,专业西餐食品供应链品牌</span><span data-en>Founded August 2021, headquartered in Beijing — a professional Western cuisine supply-chain brand</span></li>
+          <li>· <span data-zh>4 大生产基地近 10 万㎡:江西赣州 6.6 万㎡ · 河北张家口烘焙产业园 1.6 万㎡ · 河北邢台西式酱料工厂 8,000 ㎡ · 北京研发中心 6,000 ㎡</span><span data-en>Four production bases totaling nearly 100,000㎡: Ganzhou 66,000㎡ · Zhangjiakou Bakery Park 16,000㎡ · Xingtai Western Sauce Plant 8,000㎡ · Beijing R&amp;D Center 6,000㎡</span></li>
+          <li>· <span data-zh>100+ SKU,四大产品系列:西式酱料、西餐主食、炸品小食、主菜大餐</span><span data-en>100+ SKUs across four product families: Western sauces, Western staples, fried snacks and main courses</span></li>
+          <li>· <span data-zh>3,000+ 合作伙伴,覆盖全国 10 余省市</span><span data-en>3,000+ partners across 10+ provinces and cities in China</span></li>
+          <li>· <span data-zh>资质:HACCP、ISO 22000、BSCI、美国 FDA 注册,4 大基地均具备对应 SC 生产许可</span><span data-en>Credentials: HACCP, ISO 22000, BSCI and US FDA registration; all four bases hold corresponding SC production licenses</span></li>
+        </ul>
+        <a href="about-v62.html" class="inline-flex items-center gap-2 text-sm text-rust border-b border-rust/40 hover:border-rust pb-1 transition">
+          <span data-zh>了解更多</span><span data-en>Learn more</span> <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══════════════════════════════════════════
      SCREEN 4 · Featured + Stats + Footer
      ═══════════════════════════════════════════ -->
 <section id="insights" class="bg-cream pt-20 md:pt-16 pb-20">
@@ -1855,11 +1958,16 @@
           <img src="assets/news/news-01-brand-2026.jpg" alt="花花食界载誉而行,三大爆款铸芬芳" loading="lazy">
         </picture>
         <div class="p-7">
-          <div class="font-display italic text-terra text-xs tracking-wider mb-3">2026.01 · 品牌动态</div>
+          <!-- MALL · geo -->
+          <div class="font-display italic text-terra text-xs tracking-wider mb-3"><time datetime="2026-01">2026.01</time> · 品牌动态</div>
           <h4 class="font-serif-sc font-medium text-forest text-lg leading-snug">
             <span data-zh>花花食界载誉而行,三大爆款铸芬芳,2026 共赴新味境</span>
             <span data-en>Foodvio in 2026 · Three Hero Products, A New Era of Flavors</span>
           </h4>
+          <p class="text-sm text-forest/65 leading-relaxed mt-3">
+            <span data-zh>品牌年度回顾与展望:三大爆款产品,2026 迈向新味境。</span>
+            <span data-en>A year in review and the road ahead — three hero products, new flavors for 2026.</span>
+          </p>
         </div>
       </a>
       <!-- 文章 2 · 2025.12 · 喜报 入驻北京学校基地直供平台 -->
@@ -1869,11 +1977,16 @@
           <img src="assets/news/news-02-school-supplier.jpg" alt="花花食界成功入驻北京学校基地直供平台" loading="lazy">
         </picture>
         <div class="p-7">
-          <div class="font-display italic text-terra text-xs tracking-wider mb-3">2025.12 · 渠道喜报</div>
+          <!-- MALL · geo -->
+          <div class="font-display italic text-terra text-xs tracking-wider mb-3"><time datetime="2025-12">2025.12</time> · 渠道喜报</div>
           <h4 class="font-serif-sc font-medium text-forest text-lg leading-snug">
             <span data-zh>喜报 · 成功入驻北京学校基地直供平台 2026 年度供应商体系</span>
             <span data-en>Onboarded · Beijing School Direct Supply Platform 2026 Supplier System</span>
           </h4>
+          <p class="text-sm text-forest/65 leading-relaxed mt-3">
+            <span data-zh>花花食界入驻北京学校基地直供平台,进入其 2026 年度供应商体系。</span>
+            <span data-en>Foodvio joins the Beijing school direct-supply platform's 2026 supplier system.</span>
+          </p>
         </div>
       </a>
       <!-- 文章 3 · 2025.08 · 政策引领新消费 -->
@@ -1883,13 +1996,22 @@
           <img src="assets/news/news-03-policy-2025.jpg" alt="政策引领新消费 · 花花食界焕新农产品消费体验" loading="lazy">
         </picture>
         <div class="p-7">
-          <div class="font-display italic text-terra text-xs tracking-wider mb-3">2025.08 · 行业洞察</div>
+          <!-- MALL · geo -->
+          <div class="font-display italic text-terra text-xs tracking-wider mb-3"><time datetime="2025-08">2025.08</time> · 行业洞察</div>
           <h4 class="font-serif-sc font-medium text-forest text-lg leading-snug">
             <span data-zh>政策引领新消费 · 花花食界以创新实力焕新农产品消费体验</span>
             <span data-en>Policy Leads New Consumption · Foodvio Refreshes Agricultural Product Experience</span>
           </h4>
+          <p class="text-sm text-forest/65 leading-relaxed mt-3">
+            <span data-zh>新消费政策背景下,花花食界以创新实力提升农产品消费体验。</span>
+            <span data-en>Under new consumption policies, Foodvio elevates the agricultural-product experience through innovation.</span>
+          </p>
         </div>
       </a>
+    </div>
+    <!-- MALL · geo · 查看全部动态占位:G5 完成 news-v62 页后,将下方 span 改为指向该页的链接 -->
+    <div class="text-right -mt-16 mb-24 reveal">
+      <span class="text-sm text-forest/45 font-serif-sc"><span data-zh>查看全部动态(即将上线)</span><span data-en>All news (coming soon)</span> →</span>
     </div>
     <!-- Subtle stat strip -->
     <div class="stat-strip reveal">
@@ -1917,6 +2039,36 @@
         <div class="text-center">
           <div class="number">FOB<span class="text-base"> × 4</span></div>
           <div class="label"><span data-zh>出口港口</span><span data-en>Export Ports</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══════════════════════════════════════════
+     SCREEN 4.5 · 联系我们(GEO 文字区块)/* MALL · geo */
+     数据来源:data/company-info.md 第十五节
+     ═══════════════════════════════════════════ -->
+<section id="contact-info" class="bg-paper py-12 md:py-16">
+  <div class="max-w-[1100px] mx-auto px-6 md:px-12">
+    <div class="grid md:grid-cols-12 gap-10 items-start reveal">
+      <div class="md:col-span-4">
+        <div class="section-no mb-6">04 / Contact</div>
+        <h2 class="font-serif-sc font-bold text-forest text-3xl md:text-4xl leading-tight">
+          <span data-zh>联系我们</span>
+          <span data-en>Contact Us</span>
+        </h2>
+        <p class="font-serif-sc text-forest/70 text-sm md:text-base leading-relaxed mt-4">
+          <span data-zh>样品申请 / 商务合作 / 全球采购,可留资或致电。</span>
+          <span data-en>Sample requests, business partnerships and global sourcing — leave your contact or call us.</span>
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <div class="bg-white rounded-2xl p-8 border border-forest/10 font-serif-sc text-sm md:text-base text-forest/85 leading-relaxed">
+          <p class="mb-3"><strong><span data-zh>公司全称</span><span data-en>Company</span></strong>:<span data-zh>北京花花食界食品科技有限公司</span><span data-en>Beijing Foodvio Food Technology Co., Ltd.</span></p>
+          <p class="mb-3"><strong><span data-zh>客服电话</span><span data-en>Hotline</span></strong>:<a href="tel:400-6879-568" class="text-rust hover:underline">400-6879-568</a></p>
+          <p class="mb-3"><strong><span data-zh>客服邮箱</span><span data-en>Email</span></strong>:<a href="mailto:huahuakefu1@foodvio.com.cn?subject=%E5%95%86%E5%8A%A1%E5%92%A8%E8%AF%A2%20%C2%B7%20Foodvio" class="text-rust hover:underline">huahuakefu1@foodvio.com.cn</a></p>
+          <p class="mb-3"><strong><span data-zh>公司地址</span><span data-en>Address</span></strong>:<span data-zh>北京市朝阳区零秒空间酒仙桥社区 419 房间</span><span data-en>Room 419, LIMO space, Jiuxianqiao Community, Chaoyang District, Beijing, PRC</span></p>
+          <!-- TODO(MALL · geo):工作时间待 company-info.md 补充后展示,勿编造 -->
         </div>
       </div>
     </div>
@@ -1966,23 +2118,24 @@
       <div class="md:col-span-2">
         <div class="footer-col-title"><span data-zh>产品</span><span data-en>Products</span></div>
         <a href="products-sauces-v62.html" class="footer-link"><span data-zh>西式酱料</span><span data-en>Sauces</span></a>
-        <a href="products-staples-v62.html" class="footer-link"><span data-zh>西式主食</span><span data-en>Western Staples</span></a>
+        <a href="products-staples-v62.html" class="footer-link"><span data-zh>西餐主食</span><span data-en>Western Staples</span></a>
         <a href="products-snacks-v62.html" class="footer-link"><span data-zh>炸品小食</span><span data-en>Fried Snacks</span></a>
         <a href="products-mains-v62.html" class="footer-link"><span data-zh>主菜大餐</span><span data-en>Main Courses</span></a>
       </div>
       <div class="md:col-span-2">
         <div class="footer-col-title"><span data-zh>解决方案</span><span data-en>Solutions</span></div>
-        <a href="for-foodservice-v62.html" class="footer-link"><span data-zh>连锁餐饮</span><span data-en>Foodservice</span></a>
-        <a href="for-industrial-v62.html" class="footer-link"><span data-zh>机构团餐</span><span data-en>Industrial</span></a>
-        <a href="for-retail-v62.html" class="footer-link"><span data-zh>新零售</span><span data-en>Retail</span></a>
-        <a href="for-online-sales-v62.html" class="footer-link"><span data-zh>线上销售</span><span data-en>Online Sales</span></a>
-        <a href="solutions-index-v62.html" class="footer-link mt-2 text-xs"><span data-zh>18 场景全览 →</span><span data-en>All 18 scenarios →</span></a>
+        <a href="solutions-light-kitchen-v62.html" class="footer-link"><span data-zh>中小企业</span><span data-en>SMEs</span></a>
+        <a href="for-industrial-v62.html" class="footer-link"><span data-zh>国央企</span><span data-en>SOEs &amp; Institutions</span></a>
+        <a href="for-foodservice-v62.html" class="footer-link"><span data-zh>连锁餐饮</span><span data-en>Chain Foodservice</span></a>
+        <a href="for-retail-v62.html" class="footer-link"><span data-zh>新零售</span><span data-en>New Retail</span></a>
+        <a href="solutions-index-v62.html" class="footer-link mt-2 text-xs"><span data-zh>方案总览 →</span><span data-en>All solutions →</span></a>
       </div>
       <div class="md:col-span-2">
         <div class="footer-col-title"><span data-zh>探索</span><span data-en>Discover</span></div>
         <a href="our-story-index-v62.html" class="footer-link"><span data-zh>品牌故事</span><span data-en>Our Story</span></a>
         <a href="capabilities-index-v62.html" class="footer-link"><span data-zh>能力体系</span><span data-en>Capabilities</span></a>
         <a href="insights-v62.html" class="footer-link"><span data-zh>行业洞察</span><span data-en>Insights</span></a>
+        <a href="faq-v62.html" class="footer-link"><span data-zh>常见问题 FAQ</span><span data-en>FAQ</span></a><!-- MALL · geo -->
         <a href="about-v62.html" class="footer-link"><span data-zh>关于我们</span><span data-en>About</span></a>
         <a href="mailto:huahuakefu1@foodvio.com.cn?subject=Careers Inquiry" class="footer-link" title="加入花花食界 - 简历投递邮箱"><span data-zh>招贤纳士</span><span data-en>Careers</span></a>
       </div>
@@ -2097,6 +2250,28 @@ for (let i = 0; i < 20; i++) {
   p.style.animationDuration = (15 + Math.random() * 15) + 's';
   particleContainer.appendChild(p);
 }
+// ============ Hero title rotator ============
+// 与背景 heroFade(15s 循环,每张 5s)同节奏:读取 CSS 动画当前相位,
+// 把文字切换点对齐到背景交接时刻;不支持 getAnimations 时退化为整 5 秒定时
+(function(){
+  const items = document.querySelectorAll('#heroRotate .hero-rotate-item');
+  if (!items.length) return;
+  const PERIOD = 5000;
+  let idx = 0;
+  function tick() {
+    idx = (idx + 1) % items.length;
+    items.forEach((it, i) => it.classList.toggle('is-on', i === idx));
+  }
+  let offset = PERIOD;
+  try {
+    const slide = document.querySelector('.hero-slide-1');
+    const anim = slide && slide.getAnimations ? slide.getAnimations()[0] : null;
+    if (anim && typeof anim.currentTime === 'number') {
+      offset = PERIOD - (anim.currentTime % PERIOD);
+    }
+  } catch (e) {}
+  setTimeout(() => { tick(); setInterval(tick, PERIOD); }, offset);
+})();
 // W12 P0-1 · Hamburger toggle
 (function(){
   const burger = document.getElementById('navHamburger');
@@ -2116,5 +2291,9 @@ for (let i = 0; i < 20; i++) {
 <script src="cookie-banner.js" defer>
   /* W28 showSocialInfo function removed in W29 (二维码替代弹窗) */
 </script>
+<!-- MALL · ai-widget start -->
+<link rel="stylesheet" href="/assets/ai-widget.css">
+<script src="/assets/ai-widget.js" defer></script>
+<!-- MALL · ai-widget end -->
 </body>
 </html>

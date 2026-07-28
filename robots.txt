@@ -1,0 +1,31 @@
+# /* MALL · geo */ robots.txt — 花花食界 Foodvio 主站
+# 放行主流 AI / 搜索引擎爬虫，核心页面可抓取
+
+# —— 国内搜索 / AI 爬虫 ——
+User-agent: Bytespider
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+User-agent: 360Spider
+Allow: /
+
+# —— 海外 AI 爬虫 ——
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# —— 其余爬虫：默认放行核心页面 ——
+User-agent: *
+Allow: /
+
+Sitemap: https://foodvio.com.cn/sitemap.xml
